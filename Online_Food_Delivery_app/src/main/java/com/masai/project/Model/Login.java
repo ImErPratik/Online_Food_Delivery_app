@@ -28,7 +28,7 @@ public class Login {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	int loginId;
 	
-	private String apiKey ;
+	private String apiKey;
 	
 	private LocalDateTime keyExpiryDate;
 	
