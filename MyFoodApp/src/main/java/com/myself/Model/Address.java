@@ -1,5 +1,7 @@
 package com.myself.Model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -10,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -49,6 +52,11 @@ public class Address {
 	@Pattern(regexp="[0-9]{6}", message = "Only Valid for 6 digit indian pincode")
 	private String pincode;
 
+	
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JsonIgnore
+	private User ue ;
 	
 	@Override
 	public String toString() {

@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -23,11 +25,13 @@ import lombok.NoArgsConstructor;
 public class Cart {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer cart_Id;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JsonIgnore
 	private User user;
+	
 	
 	private Integer resturant_id;
 	

@@ -86,9 +86,9 @@ public class User {
 	private Cart cart;
 	
 
-//	@JsonIgnoreProperties("user")
-//	@OneToOne(cascade = CascadeType.ALL)
-	//private Login login;
+	//@JsonIgnoreProperties("user")
+	@OneToOne(cascade = CascadeType.ALL)
+	private Login login;
 	
 //	@OneToMany(cascade = CascadeType.ALL, mappedBy="user") 
 //	private List<Address> addresses = new ArrayList<>();
