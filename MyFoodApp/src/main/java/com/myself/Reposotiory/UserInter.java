@@ -11,4 +11,5 @@ import com.myself.Model.User;
 public interface UserInter extends JpaRepository<User, Integer> {
 
 	public Optional<User> findByUserNameAndUserPassword(String userName, String password);
+	
 }

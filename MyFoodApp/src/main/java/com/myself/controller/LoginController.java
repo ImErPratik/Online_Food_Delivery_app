@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.myself.Model.Login;
-
+import com.myself.Model.LoginStatus;
 import com.myself.Model.UserDTO;
 import com.myself.service.LoginServiceInterface;
 
@@ -32,6 +32,13 @@ public class LoginController {
 		String message = loginService.logout(key);
 		return new ResponseEntity<String>(message, HttpStatus.OK);
 	}
+	
+	
+	@GetMapping("/bhukkad/check/{key}")
+	public ResponseEntity<LoginStatus> checkKey(@PathVariable("key") String key){
+		Login message = loginService.isTokenValid(key);
+		return new ResponseEntity<LoginStatus>(message.getStatus(), HttpStatus.OK);
+	} 
 
 }
 

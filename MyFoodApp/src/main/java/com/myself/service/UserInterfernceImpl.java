@@ -40,9 +40,15 @@ public class UserInterfernceImpl implements UserInterferce {
 		
 	}
 
+//	@Override
+//	public User findByUsernameAndPassword(String userName, String userPassword) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
 	@Override
 	public User findByUsernameAndPassword(String userName,String userPassword) {
-	Optional<User> us = 	ui.findByUserNameAndUserPassword(userName, userPassword);
+	Optional<User> us = ui.findByUserNameAndUserPassword(userName, userPassword);
 	
 	if(us.isPresent()) {
 		
@@ -51,6 +57,40 @@ public class UserInterfernceImpl implements UserInterferce {
 	}
 	
 		return null;
+		
+	}
+
+	@Override
+	public User updatePassword(Integer user_id, User u) {
+		
+		Optional<User> us = ui.findById(user_id);
+		
+		if(us.isPresent()) {
+			
+			return ui.save(u);
+		}
+		else {
+			throw new UserNotFound("User Not Found : "+ user_id);
+		}
+
+		
+	}
+
+	@Override
+	public User deleteUserbyId(Integer user_id) {
+		
+		Optional<User> us = ui.findById(user_id);
+		
+		if(us.isPresent()) {
+			User u = us.get();
+			
+			ui.delete(u);
+			
+			return u;
+		}
+		else {
+			throw new UserNotFound("User Not Found : "+ user_id);
+		}
 		
 	}
 	

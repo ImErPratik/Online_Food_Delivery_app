@@ -11,4 +11,7 @@ public interface UserInterferce {
 	
 	public User findByUsernameAndPassword(String userName,String userPassword);
 
+	public User updatePassword(Integer user_id, User u);
+	
+	public User deleteUserbyId(Integer user_id);
 }

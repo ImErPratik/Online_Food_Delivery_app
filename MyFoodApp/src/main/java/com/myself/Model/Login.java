@@ -7,11 +7,10 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.JoinColumn;
+
 import javax.persistence.OneToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -33,16 +32,18 @@ public class Login {
 	
 	private LoginStatus status = LoginStatus.LOGGED_IN;
 	
-	@JsonIgnoreProperties("login")
+	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)
 	private User user;
 	
+	@JsonIgnore
 	public void newLogin() {
 		this.apiKey = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 6);
 		this.keyExpiryDate = LocalDateTime.now().plusHours(4);
 		this.status = LoginStatus.LOGGED_IN;
 	}
 	
+	@JsonIgnore
 	public void revokeLogin() {
 		this.apiKey = null;
 		this.keyExpiryDate = null;

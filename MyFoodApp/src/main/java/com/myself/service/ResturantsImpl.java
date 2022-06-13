@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.myself.Exception.ItemUnavailable;
 import com.myself.Model.Item;
 import com.myself.Model.Restaurants;
 import com.myself.Reposotiory.ResturantsRepo;
@@ -53,10 +54,50 @@ public class ResturantsImpl implements ResturantsInter {
 			
 			return r;
 		}
+		else {
 		
-		return null;
+		throw new ItemUnavailable("Resturant not found : "+id);
 		
+		}
 		
+	}
+
+
+	@Override
+	public Restaurants updateResturant(Restaurants res, Integer res_Id) {
+		
+		Optional<Restaurants> ob = rr.findById(res_Id);
+		
+		if(ob.isPresent()) {
+			
+			return rr.save(res);
+		}
+		else {
+		
+			throw new ItemUnavailable("Resturant not found : "+res_Id);
+		
+		}
+	}
+
+
+	@Override
+	public Restaurants deleteResturant(Integer res_Id) {
+		
+		Optional<Restaurants> ob = rr.findById(res_Id);
+		
+		if(ob.isPresent()) {
+			
+			Restaurants r = ob.get();
+			
+			rr.delete(r);
+			
+			return r;
+		}
+		else {
+		
+			throw new ItemUnavailable("Resturant not found : "+res_Id);
+		
+		}
 	}
 	
 	

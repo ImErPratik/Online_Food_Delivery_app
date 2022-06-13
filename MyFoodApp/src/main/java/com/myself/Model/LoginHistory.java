@@ -1,4 +1,6 @@
-package com.masai.project.Model;
+package com.myself.Model;
+
+import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,15 +12,19 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Items {
+@Data
+public class LoginHistory {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer itemsId;
+	private Integer id;
 	
-	private String itemName;
+	private LocalDateTime time;
+	
+	private  Integer LoginId;
+
+	
 
 }

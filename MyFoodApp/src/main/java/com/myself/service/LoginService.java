@@ -28,12 +28,9 @@ public class LoginService implements LoginServiceInterface {
 	
 	@Autowired
 	private LoginCrudRepo loginRepo;
-	
-//	@Autowired
-//	private LoginHistoryService logService;
-	
-	
-	
+
+	@Autowired
+	private LoginHistoryService logService;
 
 	@Override
 	public Login isTokenValid(String token) {
@@ -75,10 +72,12 @@ public class LoginService implements LoginServiceInterface {
 				return "User is already logged out";
 			}
 			
+			
 			//Calling the revoke login function as request by the user
 			currentLogin.revokeLogin();
 			
 			//Persisting in the database
+			//logService.storeHistory(currentLogin);
 			currentLogin.setStatus( LoginStatus.LOGGED_OUT);
 			loginRepo.save(currentLogin);
 		} else {
@@ -104,13 +103,13 @@ public class LoginService implements LoginServiceInterface {
 			if(u.getLogin() == null) {
 				newlogin = new Login();
 			} else {
-				newlogin = u.getLogin();
+				 newlogin = u.getLogin();
 		 
 			     newlogin.newLogin();
 			   
 			}
 			
-			//logService.storeHistory(newlogin);
+			logService.storeHistory(newlogin);
 			
 			newlogin.setStatus( LoginStatus.LOGGED_IN);
 			loginRepo.save(newlogin);

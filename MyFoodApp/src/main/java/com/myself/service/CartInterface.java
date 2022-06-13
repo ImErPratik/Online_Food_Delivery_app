@@ -14,7 +14,7 @@ public interface CartInterface {
 	
 	public Item getItembyId(  Integer rest_Id, Integer item_id);
 	
-	public Cart storeItemwithUser(Integer user_Id, Integer cart_Id, Integer item_Id , Integer quantity);
+	public Cart storeItemwithUser(Integer user_Id, Integer rest_Id, Integer item_Id , Integer quantity);
     
 	public String delivery(Integer cartId);
 	
