@@ -35,7 +35,6 @@ This entire journey of making the project was awesome. We have learned lots of t
 
 ![alt text](https://lh3.googleusercontent.com/70_vEzCBzRK_VGimRrM5WvQ7t7yfNiWilgJqYPbGZQexuYY112xv2xJQg3jB44XR02NfTstI4J70qPGSEft4yK1IoqXBijizEREei77zpKef4s1nGszZDoOGVvs32hJPWe2kb6urkVQ=w2400)
 
-![alt text](https://drive.google.com/file/d/1EP1SE8Mu3Nmxi65vSc1mMTTWj3UWvDfy/view?usp=sharing)
     
    </div>
 </div>
